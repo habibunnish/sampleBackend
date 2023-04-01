@@ -25,86 +25,48 @@ export class CartService {
     console.log(this.cartItemList);
   }
 
-  // removecartItem(item: any) {
-  //   this.cartItemList.map((a: any, index: any) => {
-  //     if (item.id === a.id) {
-  //       this.cartItemList.splice(index, 1);
-  //     }
-  //   });
-  //   this.productList.next(this.cartItemList);
-  // }
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //new bangaluru
-  // getProductbangluru() {
-  //   return this.productList.asObservable();
-  // }
-
   addtoCartbangaluru(item: any) {
     this.cartItemList.push(item);
     this.productList.next(this.cartItemList);
   }
  
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //royapuram
-  // getProductroyapuram() {
-  //   return this.productList.asObservable();
-  // }
-
-  addtoCartroyapuram(item: any) {
-    this.cartItemList.push(item);
-    this.productList.next(this.cartItemList);
-  }
- 
-
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  // getProductjammu() {
-  //   return this.productList.asObservable();
-  // }
 
   addtoCartsjammu(item: any) {
     this.cartItemList.push(item);
     this.productList.next(this.cartItemList);
   }
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //userBookinginstoring
-  // getProductbangalurubookedpage() {
-  //   return this.productList.asObservable();
-  // }
-
+ 
   addtoCartbangalurubookedpage(item: any) {
     this.cartItemList.push(item);
     this.productList.next(this.cartItemList);
-  }
-/////////////////////////////////////////////////////////////////////////////////////////////
+  };
+
   getaddcartDetailsOfAllLocation(){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get('http://localhost:3000/cartstoreddatas',{
+    return this.httpClient.get('http://localhost:8080/api/cart',{
       headers: httpHeaders,
     });
     
-  }
+  };
+
   postaddcartDetailsOfAllLocation(createResource:any){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.post('http://localhost:3000/cartstoreddatas', createResource,{
+    return this.httpClient.post('http://localhost:8080/api/cart', createResource,{
       headers: httpHeaders,
     });
-  }
+  };
+
   deleteAllCartLocation(id: number) {
-    return this.httpClient.delete('http://localhost:3000/cartstoreddatas/' + id).pipe(
+    return this.httpClient.delete('http://localhost:8080/api/cart' + id).pipe(
       map((res: any) => {
         return res;
       })
     );
-  }
-  //////////////////////////////////////////////////////////////////////////////
+  };
+
   count(){
     console.log('abs')
     this.getaddcartDetailsOfAllLocation().subscribe(res=>{

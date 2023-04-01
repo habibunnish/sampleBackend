@@ -1,3 +1,4 @@
+import { CartDetailsService } from './../../service/cart-details.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/guards/cart.service';
@@ -12,7 +13,7 @@ export class UserBookedDetailsComponent implements OnInit {
   Productuser: any;
   items:any;
   constructor(
-    private cartService: CartService,
+    private cart:CartDetailsService,
     private router:Router
   ) {}
   ngOnInit() {
@@ -20,7 +21,7 @@ export class UserBookedDetailsComponent implements OnInit {
   }
   //get
   getalldetailsOfLocation(){
-    this.cartService.getaddcartDetailsOfAllLocation().subscribe(data=>{
+    this.cart.getaddcartDetailsOfAllLocation().subscribe(data=>{
       this.items=data;
       console.log(this.items);
       console.log(data);

@@ -1,10 +1,10 @@
+import { ProductDetailsService } from './../../service/product-details.service';
+import { CityDetailsService } from './../../service/city-details.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AddNewDataService } from '../../services/guards/add-new-data.service';
-import { AdminService } from '../../services/guards/admin.service';
-import { BookingService } from '../../services/guards/booking.service';
 
 @Component({
   selector: 'app-add-new-data',
@@ -42,9 +42,8 @@ export class AddNewDataComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private bookingService: BookingService,
-    private adminService: AdminService,
-    private addnewdataService: AddNewDataService,
+    private city: CityDetailsService,
+    private product:ProductDetailsService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -53,7 +52,7 @@ export class AddNewDataComponent implements OnInit {
     if (this.id != 0) this.GetEdits();
   }
   GetEdits() {
-    this.addnewdataService.getedit(this.id).subscribe((data) => {
+    this.product.getedit(this.id).subscribe((data) => {
       console.log(data);
       this.roomdetails = data;
     });
@@ -70,23 +69,23 @@ export class AddNewDataComponent implements OnInit {
     console.log(this.location);
     roomdetails.location = this.location;
     if (this.location == 'Chennai') {
-      this.bookingService.addProductsDetails(roomdetails).subscribe((res) => {
+      this.city.addProductsDetails(roomdetails).subscribe((res) => {
         console.log(res);
       });
     } else if (this.location == 'Banguluru') {
-      this.bookingService
+      this.city
         .addProductsDetailsbangluru(roomdetails)
         .subscribe((res) => {
           console.log(res);
         });
     } else if (this.location == 'goa') {
-      this.bookingService
+      this.city
         .addProductsDetailsroyapuram(roomdetails)
         .subscribe((res) => {
           console.log(res);
         });
     } else if (this.location == 'Jammu') {
-      this.bookingService
+      this.city
         .addProductsDetailsjammu(roomdetails)
         .subscribe((res) => {
           console.log(res);
@@ -110,7 +109,7 @@ export class AddNewDataComponent implements OnInit {
     console.log('addproduct method calling');
     roomdetails.locations = this.locations;
     console.log(roomdetails);
-    this.adminService.addProductDetails(roomdetails).subscribe((res) => {
+    this.product.addProductDetails(roomdetails).subscribe((res) => {
       console.log(res);
       alert('product added successfully');
     });
@@ -123,7 +122,7 @@ export class AddNewDataComponent implements OnInit {
   UpdateputProduct() {
     console.log(this.roomdetails, this.roomdetails.id);
     console.log(this.roomdetails);
-    this.adminService
+    this.product
       .putproduct(this.roomdetails.id, this.roomdetails)
       .subscribe((data: any) => {
         console.log(data);
@@ -133,7 +132,7 @@ export class AddNewDataComponent implements OnInit {
 
   deletedata(data: any) {
     console.log('delete data() calling ', data.id);
-    this.bookingService.deleteproductchennai(data.id).subscribe((res) => {
+    this.product.deleteproductchennai(data.id).subscribe((res) => {
       console.log(res);
     });
     alert('deleted this details');

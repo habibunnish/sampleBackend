@@ -1,3 +1,4 @@
+import { UserDetailsService } from './../../service/user-details.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -34,7 +35,7 @@ export class RegisterFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService,
+    private userData: UserDetailsService,
     private router: Router
   ) {}
   
@@ -50,7 +51,7 @@ export class RegisterFormComponent {
       email: this.email,
     };
     console.log('hi');
-    this.loginService
+    this.userData
       .addNewUserRegisterDetails(registerFormData)
       .subscribe((data) => {
         console.log(data);

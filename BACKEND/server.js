@@ -2,10 +2,9 @@ const express=require("express");
 const cors=require("cors");
 const app=express();
 
-var corsOptions={
-    origin:"http://localhost:8081"
-};
-app.use(cors(corsOptions));
+app.use(cors({
+    origin:"http://localhost:4200",
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -18,6 +17,7 @@ db.mongoose
         useNewUrlParser:true,
         useUnifiedTopology:true
     })
+
     .then(()=>{
         console.log("connected to databse!");
     })
@@ -29,6 +29,10 @@ db.mongoose
 require("./app/routes/user.routes")(app);
 require("./app/routes/product.routes")(app);
 require("./app/routes/cart.routes")(app);
+require("./app/routes/userBookedDetails")(app);
+require("./app/routes/login.routes")(app);
+require("./app/routes/main.routes")(app);
+require("./app/routes/city.routes")(app);
 
 const PORT=process.env.PORT || 8080;
 app.listen(PORT,()=>{

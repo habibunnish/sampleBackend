@@ -8,6 +8,7 @@ exports.addProductDetails=(req,res)=>{
         price: req.body.price,
         image:req.body.image ,
         location: req.body.location,
+        locations:req.body.locations,
     });
     product
         .save(product)
@@ -89,3 +90,22 @@ exports.deleteproductchennai=(req,res)=>{
             });
         });
 };
+exports.deleteProduct=(req,res)=>{
+    const id=req.params.id;
+    Product.findByIdAndRemove(id)
+        .then((data)=>{
+            if(!data){
+                res.status(404).send({
+                    message:`cannot delte product with id=${id} product not found`
+                });
+            }else{
+                res.send({
+                    message:"product was delted successfully"
+                });
+            }
+        }).catch((err)=>{
+            res.status(500).send({
+                message:"could not delete product with id="+id
+            });
+        });
+}

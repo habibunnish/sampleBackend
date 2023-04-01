@@ -37,27 +37,30 @@ export class AppComponent {
  onlogout(){
    localStorage.removeItem('userData');
    localStorage.removeItem('adminData');
- }
+ };
  BookDetailsNew(){
    console.log('mainpage')
    this.router.navigate(['main-page'])
- }
+ };
 
  onadminlogout(){
    localStorage.removeItem('adminData');
- }
+ };
+
  home(){
   this.router.navigate(['home-page']);
- }
+ };
  query(){
   this.router.navigate(['how-it-work']);
- }
+ };
+
   // logedIn(){
   //   return localStorage.getItem('adminData');
   // }
   // logout(){
   //   return localStorage.removeItem('adminData');
   // }
+
   adminloggedin(){
     return localStorage.getItem('adminData');
   }

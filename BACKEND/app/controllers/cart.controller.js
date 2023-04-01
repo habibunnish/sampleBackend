@@ -7,7 +7,8 @@ exports.postaddcartDetailsOfAllLocations=(req,res)=>{
         area: req.body.area,
         price: req.body.price,
         image:req.body.image,
-        location: req.body.location
+        location: req.body.location,
+        locations:req.body.locations
     });
     cart
     .save(cart)
@@ -34,18 +35,7 @@ exports.getaddcartdetailsofAllLocation=(req,res)=>{
         });
     });
 };
-exports.getProducts=(req,res)=>{
-    const id=req.params.id;
-    Cart.findById(id)
-    .then((data)=>{
-        if(!data)
-        res.status(404).send({message:"not found product with id"+id});
-        else res.send(data);
-    })
-    .catch((err)=>{
-        res.status(500).send({message:"error retriving product with id"+id})
-    });
-};
+
 exports.deleteAllCartLocation=(req,res)=>{
     const id=req.params.id;
     Cart.findByIdAndRemove(id)

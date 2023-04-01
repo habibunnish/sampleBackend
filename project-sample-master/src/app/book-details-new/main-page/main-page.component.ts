@@ -1,3 +1,4 @@
+import { MainPageDetailsService } from './../../service/main-page-details.service';
 import { AddNewDataService } from './../../services/guards/add-new-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,7 +17,7 @@ List4:any=[];
 
 title='CHECK  THE BEST HOTEL IN INDIA'
 
-  constructor(config: NgbCarouselConfig, private router: Router,private addnewService:AddNewDataService) {
+  constructor(config: NgbCarouselConfig, private router: Router,private main:MainPageDetailsService) {
     config.interval = 4000;
     config.wrap = true;
     config.pauseOnHover = false;
@@ -36,7 +37,7 @@ title='CHECK  THE BEST HOTEL IN INDIA'
 
   dynamic(){
      console.log('method to display');
-    this.addnewService.mainPage().subscribe(data=>{
+    this.main.mainPage().subscribe(data=>{
       this.List=data;
       console.log(this.List);
       console.log(data);
@@ -45,7 +46,7 @@ title='CHECK  THE BEST HOTEL IN INDIA'
 
    next(){
     console.log('method to display');
-    this.addnewService.mainpageGoa().subscribe(data=>{
+    this.main.mainpageGoa().subscribe(data=>{
       this.List2=data;
       console.log(this.List2);
       console.log(data);
@@ -54,7 +55,7 @@ title='CHECK  THE BEST HOTEL IN INDIA'
    
    display(){
     console.log('method to display');
-    this.addnewService.bangaluru().subscribe(data=>{
+    this.main.bangaluru().subscribe(data=>{
       this.List3=data;
       console.log(this.List3);
       console.log(data);
@@ -63,7 +64,7 @@ title='CHECK  THE BEST HOTEL IN INDIA'
 
    show(){
     console.log('method to display');
-    this.addnewService.jammu().subscribe(data=>{
+    this.main.jammu().subscribe(data=>{
       this.List4=data;
       console.log(this.List4);
       console.log(data);

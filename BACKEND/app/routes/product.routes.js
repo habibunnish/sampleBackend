@@ -7,6 +7,7 @@ module.exports=app=>{
     router.get("/:id",product.getedit);
     router.put("/:id",product.putProduct);
     router.delete("/:id",product.deleteproductchennai);
+    router.delete("/:id",product.deleteProduct);
     app.use("/api/product",router);
 
 }

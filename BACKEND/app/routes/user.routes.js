@@ -4,5 +4,7 @@ module.exports=app=>{
 
     router.get("/",user.addNewUserRegisterDetails);
     router.post("/",user.userRegisterDetails);
+    
+
     app.use('/api/user',router);
 }

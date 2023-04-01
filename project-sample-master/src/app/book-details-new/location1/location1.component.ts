@@ -1,3 +1,5 @@
+import { ProductDetailsService } from './../../service/product-details.service';
+import { CartDetailsService } from './../../service/cart-details.service';
 import {  Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/guards/admin.service';
@@ -18,8 +20,8 @@ getalldetails:any;
 
   constructor(
     private router:Router, 
-    private cartService: CartService,
-    private admin:AdminService,
+    private cart: CartDetailsService,
+    private product:ProductDetailsService,
     private activatedRoute: ActivatedRoute
   ){}
 
@@ -31,7 +33,7 @@ getalldetails:any;
   }
 
   noDuplication(){
-    this.admin.getProduct().subscribe((res) => {
+    this.product.getProduct().subscribe((res) => {
       this.bookingList = res;
     for(var i =0;i<this.bookingList.length;i++){
       if(this.bookingList[i].location==this.state){
@@ -68,7 +70,7 @@ getalldetails:any;
   }
 
   getalldetailsOfLocation(){
-    this.cartService.getaddcartDetailsOfAllLocation().subscribe(data=>{
+    this.cart.getaddcartDetailsOfAllLocation().subscribe(data=>{
       this.getalldetails=data;
       console.log(this.getalldetails);
       console.log(data);
@@ -76,7 +78,7 @@ getalldetails:any;
 
   }
   addingindatabase(item:any){
-    this.cartService.postaddcartDetailsOfAllLocation(item).subscribe(data=>{
+    this.cart.postaddcartDetailsOfAllLocation(item).subscribe(data=>{
       console.log(data);
     })
   }

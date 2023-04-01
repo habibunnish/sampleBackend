@@ -26,10 +26,10 @@ export class UserBookedHistoryService {
 
  
 
-  cart(product: any) {
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get('http://localhost:3000/userbookeddetails/', product
-    );
-  }
+  // cart(product: any) {
+  //   const httpHeaders = new HttpHeaders();
+  //   httpHeaders.append('content-type', 'application/json');
+  //   return this.httpClient.get('http://localhost:3000/userbookeddetails/', product
+  //   );
+  // }
 }

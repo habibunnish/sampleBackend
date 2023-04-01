@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { LoginDetailsService } from './../../service/login-details.service';
+import { UserDetailsService } from './../../service/user-details.service';
 import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -34,8 +35,8 @@ this.changetype=!this.changetype;
     console.log('on submit');
    this.childMessage.emit( this.store());
   }
-users:any;
-  admin: any;
+user:any;
+  admins: any;
   type: string = 'password';
   loginForm!: FormGroup;
   ngOnInit() {
@@ -48,16 +49,19 @@ users:any;
   email: any;
  
   constructor(
-    private loginService: LoginService,
+    private login:LoginDetailsService,
+    private userdata: UserDetailsService,
     private fb: FormBuilder,
     private router: Router,
   ) {}
+
+  //doubt login values =addNewContactUser
   addNewContact() {
     const newFormData = {
       password: this.password,
       email: this.email,
     };
-    this.loginService.addNewContactUser(newFormData).subscribe((data) => {
+    this.login.loginvalues(newFormData).subscribe((data) => {
       console.log(data);
       
     });
@@ -65,13 +69,13 @@ users:any;
 
   submit() {
     
-    this.loginService.userRegisterDetails().subscribe((res:any)=>{
+    this.userdata.userRegisterDetails().subscribe((res:any)=>{
       console.log(res);
-      this.users=res;
+      this.user=res;
     
-      for (let user of this.users) {
+      for (let users of this.user) {
         console.log('users')
-        if (user.email == this.loginForm.value.email) {
+        if (users.email == this.loginForm.value.email) {
           this.saveData();
           console.log('savedata')
           this.router.navigate(['home-page']);
@@ -83,10 +87,10 @@ users:any;
      
   };
   adminlogin(){
-    this.loginService.adminLoginDetailsGet().subscribe((data)=>{
+    this.login.adminLoginDetailsGet().subscribe((data)=>{
       console.log(data);
-      this.admin=data;
-      for(let admindetails of this.admin){
+      this.admins=data;
+      for(let admindetails of this.admins){
         if(admindetails.email==this.email && admindetails.password==this.password){
          this.router.navigate(['get-product']);
         

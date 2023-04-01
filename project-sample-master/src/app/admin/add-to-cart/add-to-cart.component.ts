@@ -1,3 +1,4 @@
+import { CartDetailsService } from './../../service/cart-details.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/guards/cart.service';
@@ -22,7 +23,8 @@ export class AddToCartComponent implements OnInit {
   item: any;
   counts:any;
   constructor(
-    private cartService: CartService,
+    private cart:CartDetailsService,
+    // private cartService: CartService,
     private router: Router,
     private UserBooked: UserBookedHistoryService
   ) {}
@@ -60,7 +62,7 @@ export class AddToCartComponent implements OnInit {
   }
 
   getalldetailsOfLocation(){
-    this.cartService.getaddcartDetailsOfAllLocation().subscribe(data=>{
+    this.cart.getaddcartDetailsOfAllLocation().subscribe(data=>{
       this.items=data;
       console.log(this.items);
       console.log(data);
@@ -71,7 +73,7 @@ export class AddToCartComponent implements OnInit {
   delete(item: any) {
     //  delete item.id ;
     console.log('deleteitems', item.id);
-    this.cartService.deleteAllCartLocation(item.id).subscribe(data=>{
+    this.cart.deleteAllCartLocation(item.id).subscribe(data=>{
       this.getalldetailsOfLocation();
       console.log(data);
     })
