@@ -20,19 +20,12 @@ export class LoginDetailsService {
 
  //getlogin
  getUserLogin() {
-  const httpHeaders = new HttpHeaders();
-  httpHeaders.append('content-type', 'application/json');
-  return this.httpClient.get(`${this.url}/api/login`, {
-    headers: httpHeaders,
-  });
-};
+  return this.httpClient.get(`${this.url}/api/login`)
+ };
+
   //admin login
-  adminLoginDetailsGet() {
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get(
-      `${this.url}/api/login`, { headers: httpHeaders }
-    );
+  adminLoginDetailsGet(){
+    return this.httpClient.get(`${this.url}/api/login`)
   };
 
 }

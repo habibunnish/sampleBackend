@@ -1,5 +1,5 @@
 const db=require("../models");
-const mainPage=db.mainpage;
+const mainPage=db.main;
 
 exports.main=(req,res)=>{
     const main=new mainPage({
@@ -7,9 +7,7 @@ exports.main=(req,res)=>{
         image:req.body.image,
         para:req.body.para
     });
-    main    
-        .save(main)
-        .then((data)=>{
+    main.save(main).then((data)=>{
             res.send(data);
             console.log("data added to databse successfull");
         })
@@ -21,7 +19,7 @@ exports.main=(req,res)=>{
         });
 };
 exports.mainPage=(req,res)=>{
-    Cart.find()
+    mainPage.find()
     .then((data)=>{
         res.send(data);
     })
@@ -33,7 +31,8 @@ exports.mainPage=(req,res)=>{
     });
 };
 exports. mainpageGoa=(req,res)=>{
-    Cart.find()
+    console.log("heeeeeeeeeeeeeeeeeee");
+    mainPage.find()
     .then((data)=>{
         res.send(data);
     })
@@ -46,7 +45,7 @@ exports. mainpageGoa=(req,res)=>{
 };
 
 exports.bangaluru=(req,res)=>{
-    Cart.find()
+    mainPage.find()
     .then((data)=>{
         res.send(data);
     })
@@ -58,7 +57,7 @@ exports.bangaluru=(req,res)=>{
     });
 };
 exports.jammu=(req,res)=>{
-    Cart.find()
+    mainPage.find()
     .then((data)=>{
         res.send(data);
     })

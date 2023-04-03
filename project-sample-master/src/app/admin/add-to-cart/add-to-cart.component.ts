@@ -1,3 +1,4 @@
+import { BookedDetailsService } from './../../service/booked-details.service';
 import { CartDetailsService } from './../../service/cart-details.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -22,11 +23,11 @@ export class AddToCartComponent implements OnInit {
   file: any;
   item: any;
   counts:any;
+  
   constructor(
     private cart:CartDetailsService,
-    // private cartService: CartService,
     private router: Router,
-    private UserBooked: UserBookedHistoryService
+    private booked: BookedDetailsService
   ) {}
   //post
   addProduct(item: any) {
@@ -38,7 +39,7 @@ export class AddToCartComponent implements OnInit {
       item.email = email.email;
       console.log(this.item);
       console.log("email")
-      this.UserBooked.UserBookedData(item).subscribe((data) => {
+      this.booked.UserBookedData(item).subscribe((data) => {
         console.log(data);
        
         alert('product added successfully');

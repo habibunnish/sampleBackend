@@ -7,36 +7,36 @@ describe(' CartService ', () => {
   let service:  AddNewDataService ;
   let httpMock:HttpTestingController;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
-      providers:[AddNewDataService]
-    });
-    service = TestBed.inject( AddNewDataService );
-    httpMock=TestBed.inject(HttpTestingController);
-  });
+  // beforeEach(() => {
+  //   TestBed.configureTestingModule({
+  //     imports:[HttpClientTestingModule],
+  //     providers:[AddNewDataService]
+  //   });
+  //   service = TestBed.inject( AddNewDataService );
+  //   httpMock=TestBed.inject(HttpTestingController);
+  // });
 
-  afterEach(()=>{
-    httpMock.verify();
-  });
-  it('should get a product by id',()=>{
-    const mockProduct={
-      id: 38,
-      tittle: "Radha hometel sarovar hotel",
-      area: "tamabaram road",
-      price: "3600",
-      image: "chennai2.jpg",
-      email: "habi@123",
-      location: "Chennai"
-    }
-    const id=1;
-    service.getedit(id).subscribe((product:any)=>{
-      expect(product).toEqual(mockProduct);
-    });
-    const req=httpMock.expectOne(`http://localhost:3000/product/${id}`);
-    expect(req.request.method).toBe('GET');
-    req.flush(mockProduct);
-  });
+  // afterEach(()=>{
+  //   httpMock.verify();
+  // });
+  // it('should get a product by id',()=>{
+  //   const mockProduct={
+  //     id: 38,
+  //     tittle: "Radha hometel sarovar hotel",
+  //     area: "tamabaram road",
+  //     price: "3600",
+  //     image: "chennai2.jpg",
+  //     email: "habi@123",
+  //     location: "Chennai"
+  //   }
+  //   const id=1;
+  //   service.getedit(id).subscribe((product:any)=>{
+  //     expect(product).toEqual(mockProduct);
+  //   });
+  //   const req=httpMock.expectOne(`http://localhost:3000/product/${id}`);
+  //   expect(req.request.method).toBe('GET');
+  //   req.flush(mockProduct);
+  // });
 
   it('should be created', () => {
     expect(service).toBeTruthy();

@@ -1,4 +1,4 @@
-import { LoginDetailsService } from './../../service/login-details.service';
+import { HttpClient } from '@angular/common/http';
 import { UserDetailsService } from './../../service/user-details.service';
 import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import {
@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/guards/login.service';
+
 
 @Component({
   selector: 'app-login-form',
@@ -35,7 +35,7 @@ this.changetype=!this.changetype;
     console.log('on submit');
    this.childMessage.emit( this.store());
   }
-user:any;
+  user:any;
   admins: any;
   type: string = 'password';
   loginForm!: FormGroup;
@@ -49,10 +49,10 @@ user:any;
   email: any;
  
   constructor(
-    private login:LoginDetailsService,
     private userdata: UserDetailsService,
     private fb: FormBuilder,
     private router: Router,
+    private http:HttpClient
   ) {}
 
   //doubt login values =addNewContactUser
@@ -61,14 +61,12 @@ user:any;
       password: this.password,
       email: this.email,
     };
-    this.login.loginvalues(newFormData).subscribe((data) => {
-      console.log(data);
-      
-    });
+   this.http.post("http://localhost:8080/api/user",newFormData).subscribe((resultData:any)=>{
+    console.log(resultData);
+      })
   };
 
   submit() {
-    
     this.userdata.userRegisterDetails().subscribe((res:any)=>{
       console.log(res);
       this.user=res;
@@ -87,7 +85,7 @@ user:any;
      
   };
   adminlogin(){
-    this.login.adminLoginDetailsGet().subscribe((data)=>{
+    this.userdata.adminLoginDetailsGet().subscribe((data)=>{
       console.log(data);
       this.admins=data;
       for(let admindetails of this.admins){

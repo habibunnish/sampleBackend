@@ -147,7 +147,7 @@ export class AddNewDataComponent implements OnInit {
   submitData() {
     let formData = new FormData();
     formData.set('file', this.file);
-    this.http.post('http://localhost:3000/product', formData).subscribe((res) => {
+    this.http.post('http://localhost:8080/api/product', formData).subscribe((res) => {
       console.log(res);
     });
   }

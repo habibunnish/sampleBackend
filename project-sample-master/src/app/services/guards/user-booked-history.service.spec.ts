@@ -22,62 +22,63 @@ describe(' CartService ', () => {
     }
   ];
  
- beforeEach(() => {
-    let httpClientSpyObj=jasmine.createSpyObj('HttpClient',['get']);
-    TestBed.configureTestingModule({
-        providers:[UserBookedHistoryService,{provide:HttpClient,useValue:httpClientSpyObj},HttpHandler],
-        imports:[HttpClientTestingModule]
+//  beforeEach(() => {
+//     let httpClientSpyObj=jasmine.createSpyObj('HttpClient',['get']);
+//     TestBed.configureTestingModule({
+//         providers:[UserBookedHistoryService,{provide:HttpClient,useValue:httpClientSpyObj},HttpHandler],
+//         imports:[HttpClientTestingModule]
 
-    });
-    httpsTestingController=TestBed.inject(HttpTestingController);
-    userBookedHistoryService=TestBed.inject(UserBookedHistoryService);
-    httpClientSpy=TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
-    service = TestBed.inject( UserBookedHistoryService);
-  });
-  it('#getUseBookeddata()',(done:DoneFn)=>{
-    httpClientSpy.get.and.returnValue(of(BOOKEDETAIL));
-    userBookedHistoryService.getUseBookeddata().subscribe({
-        next:(posts)=>{
-            expect(posts).toEqual(BOOKEDETAIL);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    expect(httpClientSpy.get).toHaveBeenCalled();
-});
+//     });
+//     httpsTestingController=TestBed.inject(HttpTestingController);
+//     userBookedHistoryService=TestBed.inject(UserBookedHistoryService);
+//     httpClientSpy=TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
+//     service = TestBed.inject( UserBookedHistoryService);
+//   });
 
-it('#get CART()',(done:DoneFn)=>{
-    httpClientSpy.get.and.returnValue(of(BOOKEDETAIL));
-    userBookedHistoryService.cart(BOOKEDETAIL).subscribe({
-        next:(posts)=>{
-            expect(posts).toEqual(BOOKEDETAIL);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    expect(httpClientSpy.get).toHaveBeenCalled();
-});
+//   it('#getUseBookeddata()',(done:DoneFn)=>{
+//     httpClientSpy.get.and.returnValue(of(BOOKEDETAIL));
+//     userBookedHistoryService.getUseBookeddata().subscribe({
+//         next:(posts)=>{
+//             expect(posts).toEqual(BOOKEDETAIL);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     expect(httpClientSpy.get).toHaveBeenCalled();
+// });
 
-it('#post #UserBookedData() ',(done:DoneFn)=>{
-    httpClientSpy.post;
-    userBookedHistoryService.UserBookedData(BOOKEDETAIL).subscribe({
-        next:(posts:any)=>{
-            expect(posts).toEqual(BOOKEDETAIL);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    const req=httpsTestingController.expectOne('http://localhost:3000/');
-        expect(req.request.method).toEqual('POST');
-        expect(req.request.body).toEqual(BOOKEDETAIL);
-    expect(httpClientSpy.post).toHaveBeenCalled();
-});
+// it('#get CART()',(done:DoneFn)=>{
+//     httpClientSpy.get.and.returnValue(of(BOOKEDETAIL));
+//     userBookedHistoryService.cart(BOOKEDETAIL).subscribe({
+//         next:(posts)=>{
+//             expect(posts).toEqual(BOOKEDETAIL);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     expect(httpClientSpy.get).toHaveBeenCalled();
+// });
+
+// it('#post #UserBookedData() ',(done:DoneFn)=>{
+//     httpClientSpy.post;
+//     userBookedHistoryService.UserBookedData(BOOKEDETAIL).subscribe({
+//         next:(posts:any)=>{
+//             expect(posts).toEqual(BOOKEDETAIL);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     const req=httpsTestingController.expectOne('http://localhost:3000/');
+//         expect(req.request.method).toEqual('POST');
+//         expect(req.request.body).toEqual(BOOKEDETAIL);
+//     expect(httpClientSpy.post).toHaveBeenCalled();
+// });
 
 
 

@@ -42,5 +42,14 @@ export class CartDetailsService {
       })
     );
   };
+  // count(){
+  //    this.getaddcartDetailsOfAllLocation().subscribe(res=>{
+  //     console.log(res,Array.isArray(res));
+  //     if(Array.isArray(res)){
+  //       this.counts=res.filter(s=>s.email==JSON.parse(localStorage.getItem('userData') || '{}').Email)
+  //         console.log(this.counts.length);
+  //     }
+  //   }) 
+  // }
 
 }

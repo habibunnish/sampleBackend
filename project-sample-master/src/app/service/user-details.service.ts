@@ -12,22 +12,14 @@ export class UserDetailsService {
 
   
   //login post
-  // addNewContactUser(createResource: any) {
-  //   const httpHeaders = new HttpHeaders();
-  //   httpHeaders.append('content-type', 'application/json');
-  //   return this.httpClient.post(
-  //     'http://localhost:8080/api/user',
-  //     createResource,
-  //     { headers: httpHeaders }
-  //   );
-  // }
+  addNewContactUser(data: any) {
+    return this.httpClient.post(`${this.url}/api/user`,data
+    );
+  }
 
   userRegisterDetails() {
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get(`${this.url}/api/user`, {
-      headers: httpHeaders,
-    });
+    return this.httpClient.get(`${this.url}/api/user` )
+     
   }
 
   //register post
@@ -38,6 +30,11 @@ export class UserDetailsService {
     );
   }
 
-  
+  adminLoginDetailsGet() {
+    return this.httpClient.get(`${this.url}/api/user`);
+  };
 
+  getUserLogin() {
+    return this.httpClient.get(`${this.url}/api/login`);
+  };
 }

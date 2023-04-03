@@ -3,12 +3,13 @@ const LoginData=db.logindata;
 
 exports.loginvalues=(req,res)=>{
     const logindata=new LoginData({
-        email:req.body.email,
-        password:req.body.password
+        email:"Admin123@gmail.com",
+        password:"admin@123"
     });
     logindata
         .save(logindata)
         .then((data)=>{
+            console.log(data);
             res.send(data);
                 console.log("data added to databse");
         })
@@ -21,22 +22,24 @@ exports.loginvalues=(req,res)=>{
 exports.getgetUserLogin=(req,res)=>{
     LoginData.find()
     .then((data)=>{
+        console.log(data);
         res.send(data);
     })
-    .catch((Err)=>{
+    .catch((err)=>{
         res.status(500).sent({
             message: err.message || "some error occured while retriving userDetails"
         })
-    })
+    });
 };
 exports.adminLoginDetailsGet=(req,res)=>{
     LoginData.find()
     .then((data)=>{
+        console.log(data);
         res.send(data);
     })
-    .catch((Err)=>{
+    .catch((err)=>{
         res.status(500).sent({
             message: err.message || "some error occured while retriving userDetails"
         })
-    })
+    });
 };

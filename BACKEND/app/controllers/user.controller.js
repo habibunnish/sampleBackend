@@ -2,6 +2,7 @@ const db=require("../models");
 const User=db.user;
 
 exports.addNewUserRegisterDetails=(req,res)=>{
+    console.log("reg");
     const user=new User({
         firstname:req.body.firstname, 
         lastname: req.body.lastname,
@@ -9,11 +10,12 @@ exports.addNewUserRegisterDetails=(req,res)=>{
         city: req.body.city,
         state:req.body.state ,
         zipcode:req.body.zipcode ,
-        email: req.body.email
+        email: req.body.email,
+        password:req.body.password
     });
-    user
-    .save(user)
+    user.save(user)
     .then((data)=>{
+        console.log(data);
         res.send(data);
             console.log("data added to databse");
     })

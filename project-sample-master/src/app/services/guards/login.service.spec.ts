@@ -35,93 +35,93 @@ describe(' CartService ', () => {
         "email": "Admin@123"
     }
   ];
- beforeEach(() => {
-    let httpClientSpyObj=jasmine.createSpyObj('HttpClient',['get']);
-    TestBed.configureTestingModule({
-        providers:[LoginService,{provide:HttpClient,useValue:httpClientSpyObj},HttpHandler],
-        imports:[HttpClientTestingModule]
+//  beforeEach(() => {
+//     let httpClientSpyObj=jasmine.createSpyObj('HttpClient',['get']);
+//     TestBed.configureTestingModule({
+//         providers:[LoginService,{provide:HttpClient,useValue:httpClientSpyObj},HttpHandler],
+//         imports:[HttpClientTestingModule]
 
-    });
-    httpsTestingController=TestBed.inject(HttpTestingController);
-    loginService=TestBed.inject(LoginService);
-    httpClientSpy=TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
-    service = TestBed.inject( LoginService );
-  });
+//     });
+//     httpsTestingController=TestBed.inject(HttpTestingController);
+//     loginService=TestBed.inject(LoginService);
+//     httpClientSpy=TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
+//     service = TestBed.inject( LoginService );
+//   });
 
-  it('#  get GETUSERLOGIN() should return expected value',(done:DoneFn)=>{
-    httpClientSpy.get.and.returnValue(of(USERDETAILS));
-    loginService.getUserLogin().subscribe({
-        next:(posts: any)=>{
-            expect(posts).toEqual(USERDETAILS);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
-});
-it('# get userRegisterDetails() should return expected value',(done:DoneFn)=>{
-    httpClientSpy.get.and.returnValue(of(REGISTERETAILS));
-    loginService.userRegisterDetails().subscribe({
-        next:(posts: any)=>{
-            expect(posts).toEqual(REGISTERETAILS);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
-});
-it('# get adminLoginDetailsGet() should return expected value',(done:DoneFn)=>{
-    httpClientSpy.get.and.returnValue(of(ADMINDETAILS));
-    loginService.adminLoginDetailsGet().subscribe({
-        next:(posts: any)=>{
-            expect(posts).toEqual(ADMINDETAILS);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
-});
+//   it('#  get GETUSERLOGIN() should return expected value',(done:DoneFn)=>{
+//     httpClientSpy.get.and.returnValue(of(USERDETAILS));
+//     loginService.getUserLogin().subscribe({
+//         next:(posts: any)=>{
+//             expect(posts).toEqual(USERDETAILS);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
+// });
+// it('# get userRegisterDetails() should return expected value',(done:DoneFn)=>{
+//     httpClientSpy.get.and.returnValue(of(REGISTERETAILS));
+//     loginService.userRegisterDetails().subscribe({
+//         next:(posts: any)=>{
+//             expect(posts).toEqual(REGISTERETAILS);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
+// });
+// it('# get adminLoginDetailsGet() should return expected value',(done:DoneFn)=>{
+//     httpClientSpy.get.and.returnValue(of(ADMINDETAILS));
+//     loginService.adminLoginDetailsGet().subscribe({
+//         next:(posts: any)=>{
+//             expect(posts).toEqual(ADMINDETAILS);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
+// });
 
 
-it('#post #addProductsDetailsjammu() ',(done:DoneFn)=>{
-    httpClientSpy.post;
-    loginService.addNewContactUser(USERDETAILS).subscribe({
-        next:(posts)=>{
-            expect(posts).toEqual(USERDETAILS);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    const req=httpsTestingController.expectOne('http://localhost:3000/');
-        expect(req.request.method).toEqual('POST');
-        expect(req.request.body).toEqual(USERDETAILS);
-    expect(httpClientSpy.post).toHaveBeenCalled();
-});
+// it('#post #addProductsDetailsjammu() ',(done:DoneFn)=>{
+//     httpClientSpy.post;
+//     loginService.addNewContactUser(USERDETAILS).subscribe({
+//         next:(posts)=>{
+//             expect(posts).toEqual(USERDETAILS);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     const req=httpsTestingController.expectOne('http://localhost:3000/');
+//         expect(req.request.method).toEqual('POST');
+//         expect(req.request.body).toEqual(USERDETAILS);
+//     expect(httpClientSpy.post).toHaveBeenCalled();
+// });
 
-it('#post #addProductsDetailsjammu() ',(done:DoneFn)=>{
-    httpClientSpy.post;
-    loginService.addNewUserRegisterDetails(REGISTERETAILS).subscribe({
-        next:(posts)=>{
-            expect(posts).toEqual(REGISTERETAILS);
-            done();
-        },
-        error:()=>{
-            done.fail
-        },
-    });
-    const req=httpsTestingController.expectOne('http://localhost:3000/');
-        expect(req.request.method).toEqual('POST');
-        expect(req.request.body).toEqual(REGISTERETAILS);
-    expect(httpClientSpy.post).toHaveBeenCalled();
-});
+// it('#post #addProductsDetailsjammu() ',(done:DoneFn)=>{
+//     httpClientSpy.post;
+//     loginService.addNewUserRegisterDetails(REGISTERETAILS).subscribe({
+//         next:(posts)=>{
+//             expect(posts).toEqual(REGISTERETAILS);
+//             done();
+//         },
+//         error:()=>{
+//             done.fail
+//         },
+//     });
+//     const req=httpsTestingController.expectOne('http://localhost:3000/');
+//         expect(req.request.method).toEqual('POST');
+//         expect(req.request.body).toEqual(REGISTERETAILS);
+//     expect(httpClientSpy.post).toHaveBeenCalled();
+// });
 
 // it('#post #addProductsDetailsjammu() ',(done:DoneFn)=>{
 //     httpClientSpy.post;

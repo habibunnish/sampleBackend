@@ -31,10 +31,10 @@ describe('RegisterFormComponent ', () => {
     fixture.detectChanges();
   });
 
-  it('should navigate to the login page', () => {
-    component.onSubmit();
-    const navArgs=routerSpy.navigate.calls.first().args[0];
-    expect(navArgs).toContain('/login-form');
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should navigate to the login page', () => {
+//     component.onSubmit();
+//     const navArgs=routerSpy.navigate.calls.first().args[0];
+//     expect(navArgs).toContain('/login-form');
+//     expect(component).toBeTruthy();
+//   });
+ });

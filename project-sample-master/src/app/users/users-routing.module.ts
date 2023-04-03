@@ -1,3 +1,4 @@
+import { LoginDetailsComponent } from './login-details/login-details.component';
 import { AuthGuard } from './../services/guards/auth.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NgModule } from '@angular/core';
@@ -8,8 +9,9 @@ import { HowItWorkComponent } from './how-it-work/how-it-work.component';
 
 const routes: Routes = [
   {
-    path: 'login-form',
-    component: LoginFormComponent,
+    path: 'login-details',
+    component: LoginDetailsComponent,
+    
    
   },
   {

@@ -1,8 +1,7 @@
-import { UserDetailsService } from './../../service/user-details.service';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/guards/login.service';
+import { UserDetailsService } from 'src/app/service/user-details.service';
 
 @Component({
   selector: 'app-register-form',
@@ -11,27 +10,40 @@ import { LoginService } from '../../services/guards/login.service';
 })
 export class RegisterFormComponent {
 
+firstname: any;
+lastname: any;
+street: any;
+city: any;
+state: any;
+zipcode: any;
+email: any;
+password: any;
+// profileForm:any;
 
-  zipcode: any;
-  state: any;
-  city: any;
-  street: any;
-  lastname: any;
-  firstname: any;
-  email: any;
-
-  profileForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: ['',Validators.pattern('[0-9]{6}')],
-      email: ['',Validators.required],
-      
-    }),
-  });
+// profileForm = this.fb.group({
+//   firstName: ['', Validators.required],
+//   lastName: [''],
+//   address: this.fb.group({
+//     street: [''],
+//     city: [''],
+//     state: [''],
+//     zip: ['',Validators.pattern('[0-9]{6}')],
+//     email: ['',Validators.required],
+//     password:['',Validators.required]
+    
+//   }),
+// });
+  profileForm=new FormGroup({
+    firstname:new FormControl(),
+    lastname:new FormControl(),
+     street: new FormControl(),
+    city: new FormControl(),
+    state:new FormControl(),
+    zipcode: new FormControl(),
+    email: new FormControl(),
+    password:new FormControl(),
+   
+  })
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +52,7 @@ export class RegisterFormComponent {
   ) {}
   
   //post
-  addNewUserRegister() {
+  submit() {
     const registerFormData = {
       firstname: this.firstname,
       lastname: this.lastname,
@@ -49,21 +61,16 @@ export class RegisterFormComponent {
       state: this.state,
       zipcode: this.zipcode,
       email: this.email,
+      password:this.password
     };
     console.log('hi');
-    this.userData
-      .addNewUserRegisterDetails(registerFormData)
-      .subscribe((data) => {
+     this.userData.addNewUserRegisterDetails(registerFormData) .subscribe((data) => {
         console.log(data);
+        alert(
+          'you have successfully registered 🏨️🛌️'
+        );
+        this.router.navigate(['login-details']);
         this.profileForm.reset();
       });
-  }
-
-  onSubmit() {
-    console.warn(this.profileForm.value);
-    alert(
-      'you have successfully registered 🏨️🛌️'
-    );
-    this.router.navigate(['/login-form']);
   }
 }

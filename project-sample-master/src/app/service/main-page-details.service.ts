@@ -21,14 +21,14 @@ export class MainPageDetailsService {
   mainPage(){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get(`${this.url}/api/main`,{
+    return this.httpClient.get(`${this.url}/api/main/mainpage`,{
       headers:httpHeaders
     });
   }
   mainpageGoa(){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get(`${this.url}/api/main`,{
+    return this.httpClient.get(`${this.url}/api/main/goa`,{
       headers:httpHeaders
     });
   };
@@ -36,7 +36,7 @@ export class MainPageDetailsService {
   bangaluru(){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get(`${this.url}/api/main`,{
+    return this.httpClient.get(`${this.url}/api/main/bangluru`,{
       headers:httpHeaders
     });
   };
@@ -44,7 +44,7 @@ export class MainPageDetailsService {
   jammu(){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
-    return this.httpClient.get(`${this.url}/api/main`,{
+    return this.httpClient.get(`${this.url}/api/main/jammu`,{
       headers:httpHeaders
     });
   };

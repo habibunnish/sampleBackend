@@ -3,16 +3,42 @@ module.exports=mongoose=>{
         "user",
         mongoose.Schema(
             {
-            firstname:String, 
-            lastname:String,
-            street: String,
-            city:String,
-            state:String ,
-            zipcode:Number,
-            email: String,
+            firstname:
+             {
+               type:String, 
+              },
+
+            lastname:
+            {
+                type:String
+            },
+            street: 
+            {
+                type:String
+            },
+            city:
+            {
+                type:String
+            },
+            state:
+            {
+                type:String
+             } ,
+            zipcode:
+            {
+                type:Number
+            },
+            email: 
+            {
+                type:String
+            },
+            password:
+            {
+                type:String
+            }
         },
         {timestamps:true}
-        )
-    );
-    return User;
+       )
+    )
+    return User
 }

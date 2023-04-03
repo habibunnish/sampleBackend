@@ -34,7 +34,10 @@ require("./app/routes/login.routes")(app);
 require("./app/routes/main.routes")(app);
 require("./app/routes/city.routes")(app);
 
+app.use("/api/token",require("./routes/tokenRoutes"));
+
 const PORT=process.env.PORT || 8080;
 app.listen(PORT,()=>{
+    
     console.log(`server is running on http://localhost:${PORT}`);
 })

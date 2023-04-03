@@ -769,19 +769,7 @@
       ]
     }
   ],
-  "photo": [
-    {
-      "id": 1,
-      "tittle": "akashvani hotel",
-      "area": "TOLGATE",
-      "price": "3500",
-      "image": "newpic.jpg",
-      "location": "Chennai"
-    },
-    {
-      "id": 2
-    }
-  ],
+  
   "productdatachennai": [
     {
       "tittle": "J2 SERVICE",

@@ -1,3 +1,4 @@
+import { CartDetailsService } from './service/cart-details.service';
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,18 +12,18 @@ import { CartService } from './services/guards/cart.service';
 export class AppComponent {
   constructor(
     private router: Router,
-     private cartService: CartService
+     private cart:CartDetailsService
 
  ) {  }
 
  totalitem: any;  
 
  ngOnInit() {
-   this.cartService.getProducts().subscribe((res) => {
+   this.cart.getProducts().subscribe((res) => {
      this.totalitem=res ;
      console.log(res);
    });
-   this.cartService.count()
+  //  this.cart.count()
  }
  
 
@@ -34,6 +35,7 @@ export class AppComponent {
  
    return localStorage.getItem('userData');
  }
+ 
  onlogout(){
    localStorage.removeItem('userData');
    localStorage.removeItem('adminData');

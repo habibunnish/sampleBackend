@@ -2,12 +2,16 @@ module.exports=mongoose=>{
     const Login=mongoose.model(
         "login",
         mongoose.Schema({
-            email:String,
-            password:String
+            email:
+            {
+                type:String
+            },
+            password:
+            {
+                type:String
+            }
         },
-        {
-            timestamps:true
-        }
+        { timestamps:true }
         )
     )
     return Login

@@ -1,78 +1,72 @@
 <p (childMessage)="$event"></p>
 
+
 <div class="container">
-  <form
-    class="registration-form"
-    [formGroup]="profileForm"
-    (ngSubmit)="onSubmit()">
+  <div  class="registration-form"></div>
+   <form [formGroup]="profileForm" (ngSubmit)="submit()">
+    <pre></pre>
+
     <label for="firstname">First Name: </label><br />
     <input
       id="firstname"
-      type="text"
-      formControlName="firstName" [(ngModel)]="firstname" minlength="4"
-      required />
-      <div *ngIf="profileForm.touched && profileForm.invalid" class="alert alert-danger">invalid  very short name minimum leter required is 4
-        <p *ngIf="profileForm.errors ?.['minlength']"></p>
-      </div><br />
+      type="text" class="form-control"
+    [(ngModel)]="firstname" formControlName="firstname" />
+    <br /> 
 
     <label for="lastname">Last Name: </label><br />
     <input
-      id="lastname"
-      type="text" [(ngModel)]="lastname"
-      formControlName="lastName"/><br />
-
-    <div formGroupName="address">
-      <br />
-      <h2>Address</h2>
+      id="lastname" class="form-control"
+      type="text" [(ngModel)]="lastname" formControlName="lastname"
+     /><br />
 
       <label for="street">Street: </label><br />
       <input
-        id="street"
+        id="street" class="form-control"
         type="textarea" [(ngModel)]="street"
-        formControlName="street" 
+       formControlName="street"
         required />
        <br />
 
       <label for="city">City: </label><br />
-      <input
-        id="city"
-        type="text" [(ngModel)]="city"
-        formControlName="city" required/><br />
+      <input id="city" class="form-control"
+        type="text" [(ngModel)]="city" formControlName="city"
+       required/><br />
 
       <label for="state">State: </label><br />
       <input
-        id="state"
-        type="text" [(ngModel)]="state"
-        formControlName="state" required/><br />
+        id="state" class="form-control"
+        type="text" [(ngModel)]="state" formControlName="state"
+        required/><br />
 
       <label for="zipcode">Zip Code: </label><br />
       <input
-        id="zipcode"
-        type="tel" [(ngModel)]="zipcode"
-        formControlName="zip" required  />
-        <p *ngIf="profileForm.touched && profileForm.invalid" class="alert alert-danger">invalid zipcode thats minimum number required is 6></p>
-        <br />
+        id="zipcode" class="form-control"
+        type="tel" [(ngModel)]="zipcode"formControlName="zipcode"
+        required  />
+        <br>
+        <label for="password">Password</label>
+         <input type="text" class="form-control" id="password" formControlName="password"  [(ngModel)]="password"  placeholder="Enter Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$"   />
 
-
-      <label for="email">email: </label><br />
-      <input
-        id="email"
-        type="text" [(ngModel)]="email"
-        formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$" required /><br />
-    </div>
-    <p *ngIf="profileForm.touched && profileForm.invalid" class="alert alert-danger">invalid email use small case, uppercase,special characters</p>
-    <br />
-    <p>Complete the form to enable button.</p>
+         <br>
+         <label for="email">email: </label><br />
+         <input
+        id="email" class="form-control"
+        type="email" [(ngModel)]="email"  formControlName="email"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$" required /><br />
+    
+    <!-- <p *ngIf="profileForm.touched && profileForm.invalid" class="alert alert-danger">invalid email use small case, uppercase,special characters</p>
+    <br /> -->
+   <p>Complete the form to enable button.</p>
     <button
       type="submit"
-      class="submit"
-      (click)="addNewUserRegister()"
-      [disabled]="!profileForm.valid" >
+      class="btn btn-primary btn-ghost"
+      (click)="submit()" >
       Submit
     </button>
 
   </form>
 </div>
+
 <div class="colorss">
   <h1>
     What Ever You Try To Do Make Sure It Makes You Happy Explore Yourself 😌️
